@@ -35,16 +35,26 @@ commands:
 jobs:
   styra-check:
     executor: styra-orb/cli
+    parameters:
+      api_token:
+        description: Styra API Token
+        type: string
+        default: a
     steps:
       - checkout # check out the code in the project directory
       - styra-orb/cli-check:
-        api_token : "marco"
+        api_token : << parameters.api_token >>
   local-styra-check:
     executor: styra-orb/cli
+    parameters:
+      api_token:
+        description: Styra API Token
+        type: string
+        default: b
     steps:
       - checkout # check out the code in the project directory
       - local-cli-check:
-        api_token : "marco"
+        api_token : << parameters.api_token >>
 
 
 workflows:
@@ -54,3 +64,4 @@ workflows:
         context: test
     - local-styra-check:
         context: test
+        api_token : marco
