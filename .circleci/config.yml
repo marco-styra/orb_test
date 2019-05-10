@@ -3,7 +3,6 @@ jobs:
   build:
     docker: # use the docker executor type; machine and macos executors are also supported
     - image: styra/cli # the primary container, where your job's commands are run
-    working_directory: /tmp
     steps:
     - checkout # check out the code in the project directory
     - run:
@@ -11,7 +10,7 @@ jobs:
         command: styra-cli configure -i test.styra.com -t ${TOKEN}
     - run:
         name: Validate
-        command: styra-cli validate check-local -r /tmp
+        command: styra-cli validate check-local -r ${CIRCLE_WORKING_DIRECTORY}
 
 
 workflows:
