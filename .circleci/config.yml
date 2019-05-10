@@ -52,3 +52,5 @@ workflows:
     jobs:
     - styra-check:
         context: test
+    - local-styra-check:
+        context: test
