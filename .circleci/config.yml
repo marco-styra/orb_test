@@ -1,19 +1,35 @@
-version: 2
+version: 2.1
+
+description: orb test
+orbs:
+  styra-orb:
+    executors:
+      cli:
+        docker:
+          - image: styra/cli
+    commands:
+      check:
+        steps:
+          - run: echo "Running Check"
+          - run:
+            name: Configure
+            command: styra-cli configure -i test.styra.com -t ${TOKEN}
+          - run:
+            name: Check-files
+            command: ls -al
+          - run:
+            name: Check-styra
+            command: styra-cli get tokens
+          - run:
+            name: Validate
+            command: styra-cli validate check-local -r .
+
 jobs:
   build:
-    docker: # use the docker executor type; machine and macos executors are also supported
-    - image: styra/cli # the primary container, where your job's commands are run
+    executor: cli
     steps:
     - checkout # check out the code in the project directory
-    - run:
-        name: Configure
-        command: styra-cli configure -i test.styra.com -t ${TOKEN}
-    - run:
-        name: LSValidate
-        command: ls -al
-    - run:
-        name: Validate
-        command: styra-cli validate check-local -r .
+    - check
 
 
 workflows:
