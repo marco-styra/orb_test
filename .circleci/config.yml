@@ -22,17 +22,17 @@ orbs:
           - run: styra-cli get tokens
           - run: styra-cli validate check-local -r .
 
-    jobs:
-      check:
-        executor: cli
-        steps:
-          - checkout # check out the code in the project directory
-          - cli-check:
-            api_token : ${TOKEN}
+jobs:
+  check:
+    executor: styra-orb/cli
+    steps:
+      - checkout # check out the code in the project directory
+      - styra-orb/cli-check:
+        api_token : ${TOKEN}
 
 
 workflows:
   check-workflow:
     jobs:
-    - styra-orb/check:
+    - check:
         context: test
