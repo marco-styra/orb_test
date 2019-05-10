@@ -1,6 +1,7 @@
 version: 2.1
 
 description: orb test
+
 orbs:
   styra-orb:
     executors:
@@ -8,33 +9,29 @@ orbs:
         docker:
           - image: styra/cli
     commands:
-      check:
+      cli-check:
+        parameters:
+          api_token:
+            description: Styra API Token
+            type: string
+            default: undefined
         steps:
           - run: echo "Running Check"
-          - run:
-            name: Configure
-            command: styra-cli configure -i test.styra.com -t ${TOKEN}
-          - run:
-            name: Check-files
-            command: ls -al
-          - run:
-            name: Check-styra
-            command: styra-cli get tokens
-          - run:
-            name: Validate
-            command: styra-cli validate check-local -r .
+          - run: styra-cli configure -i test.styra.com -t <<parameters.api_token>>
+          - run: ls -al
+          - run: styra-cli get tokens
+          - run: styra-cli validate check-local -r .
 
     jobs:
       check:
         executor: cli
         steps:
           - checkout # check out the code in the project directory
-          - check
+          - cli-check
 
 
 workflows:
-  version: 2
   workflow:
     jobs:
-    - styra-orb/check:
-      context: test 
+    - styra-orb/check
+      # context: test 
