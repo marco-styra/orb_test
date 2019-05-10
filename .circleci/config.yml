@@ -1,16 +1,16 @@
-version: 2.1
+version: 2
 jobs:
   build:
     docker: # use the docker executor type; machine and macos executors are also supported
-      - image: styra/cli # the primary container, where your job's commands are run
+    - image: styra/cli # the primary container, where your job's commands are run
     steps:
-      - checkout # check out the code in the project directory
-      - run:
+    - checkout # check out the code in the project directory
+    - run:
         name: Configure
         command: styra-cli configure -i test.styra.com -t 12323
 
 workflows:
-  version: 2.1
+  version: 2
   workflow:
     jobs:
-      - build:
+    - build
