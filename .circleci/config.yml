@@ -9,8 +9,8 @@ jobs:
           name: Configure
           command: styra-cli configure -i test.styra.com -t 12323
 workflows:
-  version: 2
+  version: 2.1
   workflow:
     jobs:
     - build
-    context: test.styra.com
+      context: test.styra.com
