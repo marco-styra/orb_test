@@ -28,8 +28,7 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - styra-orb/cli-check:
-        parameters:
-          api_token : "marco"
+        api_token : "marco"
 
 
 workflows:
