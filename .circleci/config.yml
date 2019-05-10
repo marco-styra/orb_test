@@ -5,4 +5,6 @@ jobs:
       - image: styra/cli # the primary container, where your job's commands are run
     steps:
       - checkout # check out the code in the project directory
-      - run: configure -i test.styra.com -t 12323
+      - run:
+          name: Configure
+          command: configure -i test.styra.com -t 12323
