@@ -2,4 +2,5 @@ checks:
   test:
     system_id: cf8d422d77e943c4a09c75236cd1630f
     policy: admission_control
-    files: nginx-pod.yaml
+    files:
+      - nginx-pod.yaml
