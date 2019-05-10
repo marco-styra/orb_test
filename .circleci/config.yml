@@ -7,7 +7,7 @@ jobs:
     - checkout # check out the code in the project directory
     - run:
         name: Configure
-        command: styra-cli configure -i test.styra.com -t 12323
+        command: styra-cli configure -i test.styra.com -t ${TOKEN}
 
 workflows:
   version: 2
