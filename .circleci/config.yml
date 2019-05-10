@@ -24,17 +24,17 @@ orbs:
             name: Validate
             command: styra-cli validate check-local -r .
 
-jobs:
-  build:
-    executor: cli
-    steps:
-    - checkout # check out the code in the project directory
-    - check
+    jobs:
+      check:
+        executor: cli
+        steps:
+          - checkout # check out the code in the project directory
+          - check
 
 
 workflows:
   version: 2
   workflow:
     jobs:
-    - build:
-        context: test 
+    - styra-orb/check:
+      context: test 
