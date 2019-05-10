@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run:
-          name: Configure
-          command: styra-cli configure -i test.styra.com -t 12323
+        name: Configure
+        command: styra-cli configure -i test.styra.com -t 12323
+
 workflows:
   version: 2.1
   workflow:
     jobs:
       - build:
-        context: test
