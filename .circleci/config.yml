@@ -8,6 +8,10 @@ jobs:
     - run:
         name: Configure
         command: styra-cli configure -i test.styra.com -t ${TOKEN}
+    - run:
+        name: Get Tokens 
+        command: styra-cli get tokens
+
 
 workflows:
   version: 2
