@@ -16,23 +16,39 @@ orbs:
             type: string
             default: undefined
         steps:
-          - run: echo "Running Check"
+          - run: echo "Running Check" << parameters.api_token >>
           #- run: styra-cli configure -i test.styra.com -t << parameters.api_token >>
           - run: ls -al
           #- run: styra-cli get tokens
           #- run: styra-cli validate check-local -r .
 
+commands:
+  local-cli-check:
+    parameters:
+      api_token:
+        description: Styra API Token
+        type: string
+        default: undefined
+    steps:
+      - run: echo "Running Check" << parameters.api_token >>
+      
 jobs:
-  check:
+  styra-check:
     executor: styra-orb/cli
     steps:
       - checkout # check out the code in the project directory
       - styra-orb/cli-check:
+        api_token : "marco"
+  local-styra-check:
+    executor: styra-orb/cli
+    steps:
+      - checkout # check out the code in the project directory
+      - local-cli-check:
         api_token : "marco"
 
 
 workflows:
   check-workflow:
     jobs:
-    - check:
+    - styra-check:
         context: test
