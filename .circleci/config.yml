@@ -13,4 +13,4 @@ workflows:
   workflow:
     jobs:
       - build:
-        context: test.styra.com
+        context: "test.styra.com"
