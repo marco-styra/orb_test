@@ -27,11 +27,12 @@ orbs:
         executor: cli
         steps:
           - checkout # check out the code in the project directory
-          - cli-check
+          - cli-check:
+            api_token : ${TOKEN}
 
 
 workflows:
   check-workflow:
     jobs:
     - styra-orb/check:
-        context: test 
+        context: test
