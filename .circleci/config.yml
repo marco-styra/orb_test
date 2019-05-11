@@ -8,6 +8,6 @@ workflows:
   version: 2.1
   check-workflow:
     jobs:
-    - styra-orb/cli-check:
+    - styra-orb/styra-check:
         context: test
         api_token : marco
