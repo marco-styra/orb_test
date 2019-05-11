@@ -10,4 +10,4 @@ workflows:
     jobs:
     - styra-orb/styra-check:
         context: test
-        api_token : marco
+        api_token : ${TOKEN}
