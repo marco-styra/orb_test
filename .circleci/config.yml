@@ -2,7 +2,7 @@ version: 2.1
 
 # Load Styra's cli orb
 orbs:
-  styra-orb: styra/cli@dev:0.0.1
+  styra-orb: styra/cli@0.0.2
 
 workflows:
   version: 2.1
