@@ -10,4 +10,3 @@ workflows:
     jobs:
     - styra-orb/styra-policy-check:
         context: test
-        api_token : TOKEN
