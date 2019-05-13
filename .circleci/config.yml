@@ -2,12 +2,12 @@ version: 2.1
 
 # Load Styra's cli orb
 orbs:
-  styra-orb: styra/cli@0.0.2
+        styra-orb: styra/cli@dev:0.0.2
 
 workflows:
   version: 2.1
   check-workflow:
     jobs:
-    - styra-orb/styra-check:
+    - styra-orb/styra-policy-check:
         context: test
-        api_token : ${TOKEN}
+        api_token : TOKEN
